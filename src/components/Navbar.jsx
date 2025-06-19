@@ -64,6 +64,7 @@ const gooeyNavStyles = `
   transition: all 0.3s ease;
   position: relative;
   z-index: 4;
+  cursor: pointer;
 }
 
 .gooey-nav-container a:hover {
@@ -289,19 +290,12 @@ const GooeyNav = ({
   };
 
   const handleNavClick = (e, index) => {
+    e.preventDefault(); // Prevent default link behavior
     setActiveIndex(index);
     createParticles(e.currentTarget, index);
     
-    // Option 1: Let the default link behavior work (remove preventDefault)
-    // The link will navigate normally
-    
-    // Option 2: For React Router (uncomment if using React Router)
-    // e.preventDefault();
-    // window.history.pushState({}, '', items[index].href);
-    
-    // Option 3: For programmatic navigation (uncomment if needed)
-    // e.preventDefault();
-    // window.location.href = items[index].href;
+    // Use React Router's navigate function
+    navigate(items[index].href);
   };
 
   return (
