@@ -56,7 +56,6 @@ export default function Experience() {
     <>
       <style>{styles}</style>
       <section className="container-custom fade-in">
-        <h2 className="text-center fw-bold mb-5">Professional Experience</h2>
         <div className="row g-4">
           {experience.map((exp, index) => (
             <div key={exp.role} className="col-12">

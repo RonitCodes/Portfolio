@@ -54,7 +54,6 @@ export default function WhatIDo() {
     <>
       <style>{styles}</style>
       <section className="container-custom fade-in">
-        <h2 className="text-center fw-bold mb-5">What I Do</h2>
         <div className="row g-4">
           {services.map((service, index) => (
             <div key={service.title} className="col-lg-6 col-md-12">

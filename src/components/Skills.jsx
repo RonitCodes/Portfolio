@@ -39,7 +39,6 @@ const categories = [
     <>
       <style>{styles}</style>
       <section className="container-custom fade-in">
-        <h2 className="text-center fw-bold mb-4">Skills</h2>
         <div className="row g-4">
           {categories.map(cat => (
             <div key={cat.title} className="col-md-6">
