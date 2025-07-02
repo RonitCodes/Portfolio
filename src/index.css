@@ -20,19 +20,15 @@ body {
   overflow-x: hidden;
 }
 
-/* ── LAYOUT: sticky footer container ─────────────────────────────────────── */
-
 .app-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;      /* fill at least the viewport */
+  min-height: 100vh;
 }
 
 .app-wrapper main {
-  flex: 1;                /* grow to push footer down */
+  flex: 1;
 }
-
-/* ── FULL-SCREEN animated gradient ──────────────────────────────────────── */
 
 .wave-bg {
   position: fixed;
@@ -40,11 +36,11 @@ body {
   width: 100%; height: 100%;
   overflow: hidden;
   background: linear-gradient(90deg,
-    var(--bg-color)      0%,
-    #1f1f1f              25%,
+    var(--bg-color) 0%,
+    #1f1f1f 25%,
     var(--primary-color) 50%,
-    #1f1f1f              75%,
-    var(--bg-color)      100%
+    #1f1f1f 75%,
+    var(--bg-color) 100%
   );
   background-size: 150% 150%;
   animation: gradientShift 10s ease-in-out infinite;
@@ -53,12 +49,10 @@ body {
 }
 
 @keyframes gradientShift {
-  0%   { background-position:   0% 50%; }
+  0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
-  100% { background-position:   0% 50%; }
+  100% { background-position: 0% 50%; }
 }
-
-/* ── GLITCH BACKGROUND ───────────────────────────────── */
 
 .glitch-bg {
   position: fixed;
@@ -70,53 +64,37 @@ body {
   pointer-events: none;
 }
 
-/* ── METALLIC-PAINT ─────────────────────────────────────────────────────────────── */
-
 .paint-container {
   position: relative;
-  width: 200px;   /* adjust to your desired blob size */
+  width: 200px;
   height: 200px;
-  margin: 0 auto; /* center horizontally */
-  z-index: 2;     /* above most content */
+  margin: 0 auto;
+  z-index: 2;
   display: block;
 }
 
-
-/* ── ROTATING BLOB ─────────────────────────────────────────────────────── */
 .animated-blob {
   width: 200px;
   height: 200px;
   background-color: #28d740;
   border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   animation: blob-animation 5s infinite alternate;
-  margin: 0 auto; /* Center the blob horizontally */
+  margin: 0 auto;
 }
 
 @keyframes blob-animation {
-  0% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
-  25% {
-    border-radius: 40% 60% 70% 30% / 30% 70% 40% 60%;
-  }
-  50% {
-    border-radius: 30% 70% 60% 40% / 70% 40% 60% 30%;
-  }
-  75% {
-    border-radius: 70% 30% 40% 60% / 40% 60% 30% 70%;
-  }
-  100% {
-    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-  }
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 40% 60% 70% 30% / 30% 70% 40% 60%; }
+  50% { border-radius: 30% 70% 60% 40% / 70% 40% 60% 30%; }
+  75% { border-radius: 70% 30% 40% 60% / 40% 60% 30% 70%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
 }
-
-/* ── FUZZY TEXT CONTAINER ─────────────────────────────────────────────── */
 
 .fuzzy-text-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80px; /* Adjust based on your font size */
+  min-height: 80px;
   z-index: 2;
 }
 
@@ -124,8 +102,6 @@ body {
   max-width: 100%;
   height: auto;
 }
-
-/* ── HERO CARD BORDER PULSE ────────────────────────────────────────────── */
 
 .hero-card {
   background: #1f1f1f;
@@ -137,13 +113,12 @@ body {
   animation: borderPulse 3s ease-in-out infinite;
   z-index: 2;
 }
+
 @keyframes borderPulse {
   0%   { box-shadow: 0 0  8px var(--primary-color); border-color: var(--primary-color); }
-  50%  { box-shadow: 0 0 12px #ffffff;               border-color: #ffffff; }
+  50%  { box-shadow: 0 0 12px #ffffff; border-color: #ffffff; }
   100% { box-shadow: 0 0  8px var(--primary-color); border-color: var(--primary-color); }
 }
-
-/* ── FOOTER ────────────────────────────────────────────────────────────── */
 
 footer {
   background-color: var(--bg-color);
@@ -154,4 +129,30 @@ footer {
   color: var(--text-color);
   font-size: .875rem;
   z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 1.25rem;
+    margin: 1rem;
+  }
+
+  .fuzzy-text-container {
+    min-height: 60px;
+  }
+
+  .glitch-bg,
+  .wave-bg {
+    background-size: 200% 200%;
+  }
+
+  .paint-container,
+  .animated-blob {
+    width: 150px;
+    height: 150px;
+  }
+
+  footer {
+    font-size: 0.75rem;
+  }
 }
