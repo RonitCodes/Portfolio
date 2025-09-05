@@ -32,9 +32,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/WhatIDo" element={<WhatIDo />} />
-            <Route path="/skills" element={<Skills />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/Skills" element={<Skills />} />
+            <Route path="/Experience" element={<Experience />} />
+            <Route path="/Contact" element={<Contact />} />
             <Route path="*" element={<Hero />} />
           </Routes>
         </Suspense>

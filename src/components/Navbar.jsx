@@ -4,9 +4,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const NAVIGATION_ITEMS = [
   { href: '/', label: 'Home' },
   { href: '/WhatIDo', label: 'What I Do' },
-  { href: '/skills', label: 'Skills' },
-  { href: '/experience', label: 'Experience' },
-  { href: '/contact', label: 'Contact' }
+  { href: '/Skills', label: 'Skills' },
+  { href: '/Experience', label: 'Experience' },
+  { href: '/Contact', label: 'Contact' }
 ];
 
 // Embedded CSS styles (desktop gooey)
