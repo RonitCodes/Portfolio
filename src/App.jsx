@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
+// Lazy load components with correct names
 const Hero = lazy(() => import("./components/Hero"));
 const WhatIDo = lazy(() => import("./components/WhatIDo"));
 const Skills = lazy(() => import("./components/Skills"));
@@ -27,14 +28,14 @@ export default function App() {
 
       <Navbar />
 
-       <main style={{ position: "relative", zIndex: 2, paddingTop: "80px", flex: 1 }}>
+      <main style={{ position: "relative", zIndex: 2, paddingTop: "80px", flex: 1 }}>
         <Suspense fallback={<div className="text-center mt-5">Loading...</div>}>
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/WhatIDo" element={<WhatIDo />} />
-            <Route path="/Skills" element={<Skills />} />
-            <Route path="/Experience" element={<Experience />} />
-            <Route path="/Contact" element={<Contact />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<Hero />} />
           </Routes>
         </Suspense>

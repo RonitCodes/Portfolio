@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 const NAVIGATION_ITEMS = [
   { href: '/', label: 'Home' },
   { href: '/WhatIDo', label: 'What I Do' },
-  { href: '/Skills', label: 'Skills' },
-  { href: '/Experience', label: 'Experience' },
-  { href: '/Contact', label: 'Contact' }
+  { href: '/skills', label: 'Skills' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/contact', label: 'Contact' }
 ];
 
 // Embedded CSS styles (desktop gooey)
@@ -48,6 +48,7 @@ const gooeyNavStyles = `
 .gooey-nav-container li.active a {
   font-weight: 600;
   color: #fff;
+  background-color: rgba(40, 215, 64, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -65,7 +66,7 @@ function MobileNav({ items }) {
   return (
     <nav className="navbar navbar-dark bg-dark fixed-top d-md-none">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">My Site</a>
+        <Link className="navbar-brand" to="/">My Site</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -81,17 +82,13 @@ function MobileNav({ items }) {
                   key={item.href}
                   className={`nav-item ${location.pathname === item.href ? 'active' : ''}`}
                 >
-                  <a
+                  <Link
                     className="nav-link text-light"
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      navigate(item.href);
-                      setOpen(false);
-                    }}
+                    to={item.href}
+                    onClick={() => setOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -99,6 +96,28 @@ function MobileNav({ items }) {
         )}
       </div>
     </nav>
+  );
+}
+
+// Desktop Gooey Nav Component
+function GooeyNav({ items }) {
+  const location = useLocation();
+
+  return (
+    <div className="gooey-nav-container">
+      <nav>
+        <ul>
+          {items.map((item) => (
+            <li 
+              key={item.href}
+              className={location.pathname === item.href ? 'active' : ''}
+            >
+              <Link to={item.href}>{item.label}</Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 }
 
@@ -115,17 +134,7 @@ export default function Navbar() {
     <>
       {/* Desktop Gooey Nav */}
       <div className="d-none d-md-block">
-        <div className="gooey-nav-container">
-          <nav>
-            <ul>
-              {NAVIGATION_ITEMS.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
+        <GooeyNav items={NAVIGATION_ITEMS} />
       </div>
 
       {/* Mobile Nav */}
