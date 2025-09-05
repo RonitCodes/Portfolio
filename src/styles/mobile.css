@@ -1,0 +1,200 @@
+/* src/styles/mobile.css */
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .app-wrapper {
+    min-height: -webkit-fill-available !important;
+  }
+  
+  .hero-container {
+    min-height: -webkit-fill-available !important;
+  }
+}
+
+/* Prevent rubber band scrolling on iOS */
+html, body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow-x: hidden;
+}
+
+/* Modern viewport units fallback */
+@supports (height: 100svh) {
+  .app-wrapper {
+    min-height: 100svh !important;
+  }
+  
+  .hero-container {
+    min-height: 80svh !important;
+  }
+}
+
+/* Fix for iOS input zoom */
+input, textarea, select {
+  font-size: 16px !important;
+  transform: scale(1);
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* Fix for touch events */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Allow text selection for specific elements */
+p, span, h1, h2, h3, h4, h5, h6, .hero-text-custom {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Prevent selection for interactive elements */
+button, a, .nav-link, .navbar-toggler {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Fix for Safari rendering glitches */
+.hero-card, .navbar, .gooey-nav-container {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Touch optimizations */
+.hero-card, .nav-link, button, a, .navbar-toggler {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* Mobile navbar specific fixes */
+.navbar-toggler {
+  border: none !important;
+  padding: 0.25rem 0.5rem;
+  -webkit-appearance: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Font rendering improvements */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix for mobile landscape orientation */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .hero-container {
+    min-height: 100vh !important;
+    padding: 1rem 0;
+  }
+  
+  .hero-card {
+    padding: 1rem;
+  }
+}
+
+/* iPhone specific fixes */
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  /* iPhone X/XS */
+  .app-wrapper {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  /* iPhone XR */
+  .navbar {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+/* Fix for small mobile screens */
+@media screen and (max-width: 480px) {
+  .hero-text-custom {
+    font-size: clamp(1.5rem, 6vw, 3rem) !important;
+  }
+  
+  .hero-card {
+    padding: 1rem;
+    margin: 0 1rem;
+  }
+  
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Fix for very small screens */
+@media screen and (max-width: 320px) {
+  .hero-text-custom {
+    font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
+  }
+}
+
+/* Loading states for mobile */
+.loading-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #000;
+  color: #28d740;
+}
+
+/* Prevent scroll bounce on iOS */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  body {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  
+  .app-wrapper {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+}
+
+/* Fix for mobile menu visibility */
+@media (max-width: 767.98px) {
+  .d-md-none {
+    display: block !important;
+  }
+  
+  .d-none.d-md-block {
+    display: none !important;
+  }
+}
+
+/* Performance optimizations for mobile */
+.hero-card, .navbar, .glitch-bg {
+  will-change: auto;
+  contain: layout style paint;
+}
+
+/* Reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
