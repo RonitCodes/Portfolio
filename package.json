@@ -1,48 +1,41 @@
 {
-  "name": "my-app",
-  "version": "1.0.0",
+  "name": "portfolio",
+  "version": "0.1.0",
   "private": true,
-  "homepage": "/",
+  "homepage": ".",
   "dependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.3.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.11.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "react-scroll": "^1.9.3",
-    "web-vitals": "^2.1.4"
+    "react-snap": "^1.23.0",
+    "source-map-explorer": "^2.5.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build && react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "analyze": "source-map-explorer 'build/static/js/*.js' --html build/report.html"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "reactSnap": {
+    "inlineCss": true,
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "minifyHtml": {
+      "collapseWhitespace": true,
+      "removeComments": true
+    }
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      ">0.3%",
+      "defaults",
       "not dead",
-      "not op_mini all"
+      "iOS >= 12"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
   }
 }

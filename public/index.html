@@ -3,75 +3,34 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    
-    <!-- Updated viewport meta tag for mobile compatibility -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
-    <!-- iOS Safari specific meta tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Ronit Sharma">
-    
-    <!-- Prevent various mobile browser features -->
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    
-    <!-- Theme colors -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="msapplication-navbutton-color" content="#000000">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
-    <meta name="description" content="Ronit Sharma - Computer Science and Mathematics from VCU, Software Engineer @ Bank of America, AI and Web Dev Enthusiast" />
-    
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    
-    <title>Ronit Sharma - Portfolio</title>
-    
-    <!-- Prevent zoom on input focus for iOS -->
-    <style>
-      /* Prevent input zoom on iOS */
-      input, textarea, select {
-        font-size: 16px !important;
-      }
-      
-      /* Initial loading styles */
-      .initial-loading {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #000;
-        color: #28d740;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        font-family: system-ui, -apple-system, sans-serif;
-      }
-    </style>
+    <meta name="description" content="Personal portfolio" />
+
+    <!-- Preconnects (keep or remove depending on what you use) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Example Google Font (ensure display=swap to avoid text-invisible on iPhone) -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"> -->
+
+    <!-- Preload your above-the-fold hero image if you have one -->
+    <!-- <link rel="preload" as="image" href="/hero.webp" imagesrcset="/hero.webp 1x, /hero@2x.webp 2x" /> -->
+
+    <!-- iOS install / PWA niceties (optional) -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>Portfolio</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    
-    <!-- Initial loading screen -->
-    <div id="initial-loading" class="initial-loading">
-      <div>Loading...</div>
-    </div>
-    
+    <!-- Small inline style that’s safe everywhere and helps iOS avoid heavy reflows early -->
+    <style>
+      img { content-visibility: auto; }
+      html, body { -webkit-overflow-scrolling: touch; }
+      * { -webkit-tap-highlight-color: transparent; }
+    </style>
     <div id="root"></div>
-    
-    <!-- Remove loading screen when React loads -->
-    <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          const loadingElement = document.getElementById('initial-loading');
-          if (loadingElement) {
-            loadingElement.style.display = 'none';
-          }
-        }, 100);
-      });
-    </script>
+    <!-- CRA injects scripts here -->
   </body>
 </html>
