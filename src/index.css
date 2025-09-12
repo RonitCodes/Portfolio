@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+/* Removed blocking Google Font import to speed up first paint on iOS */
 
 :root {
   --primary-color: #28d740;
@@ -23,7 +23,9 @@ body {
 .app-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vdh;
+  /* iOS safe viewport height with fallback */
+  min-height: calc(var(--vh, 1vh) * 100);
+  min-height: 100vh;
 }
 
 .app-wrapper main {
@@ -145,12 +147,17 @@ footer {
   .wave-bg {
     background-size: 200% 200%;
   }
+  /* Kill heavy background animation on mobile for faster first paint */
+  .wave-bg { animation: none !important; }
 
   .paint-container,
   .animated-blob {
     width: 150px;
     height: 150px;
   }
+  /* Disable border/box-shadow animations on mobile */
+  .hero-card { animation: none !important; }
+  .animated-blob { animation: none !important; }
 
   footer {
     font-size: 0.75rem;
@@ -195,4 +202,12 @@ img { image-rendering: optimizeQuality; }
 /* Links/buttons accessible focus without tap highlight */
 a, button { outline-color: #7aa2ff; }
 
+}
+
+/* Respect user preference globally */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .wave-bg { animation: none !important; }
+  .hero-card { animation: none !important; }
+  .animated-blob { animation: none !important; }
 }

@@ -21,6 +21,27 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <title>Portfolio</title>
+    <script>
+      (function () {
+        try {
+          var ua = navigator.userAgent || '';
+          var isIOS = /iP(hone|od|ad)/.test(ua);
+          if (isIOS) {
+            document.documentElement.classList.add('is-ios');
+            var setVH = function () {
+              document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+            };
+            setVH();
+            window.addEventListener('resize', setVH);
+            window.addEventListener('orientationchange', setVH);
+          }
+          var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (isIOS || prefersReduced) {
+            document.documentElement.classList.add('no-heavy-anim');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

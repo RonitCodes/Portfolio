@@ -8,6 +8,8 @@ import { logCompatibilityReport } from "./utils/browserCompatibility";
 
 // Import the mobile CSS file
 import "./styles/mobile.css";
+import useLightModeForLowEnd from "./hooks/useLightModeforLowEnd";
+import { onIdle as onIdleGlobal } from "./utils/idle";
 
 // --- Lazy sections (as you already had) ---
 const Hero = lazy(() => import("./components/Hero"));
@@ -48,6 +50,8 @@ function onIdle(fn, { timeout = 2000 } = {}) {
 }
 
 export default function App() {
+  // Add CSS class to tone down animations on low-end / reduced-motion devices
+  useLightModeForLowEnd();
   const [deviceInfo, setDeviceInfo] = useState({
     isMobile: false,
     isIOS: false,
@@ -111,7 +115,7 @@ export default function App() {
 
   // Signal idle after first paint
   useEffect(() => {
-    onIdle(() => setIsIdle(true));
+    onIdleGlobal(() => setIsIdle(true));
   }, []);
 
   // Decide whether to allow heavy visual effects (LetterGlitch / big filters)
