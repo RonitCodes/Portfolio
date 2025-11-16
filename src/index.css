@@ -147,6 +147,7 @@ footer {
   .wave-bg {
     background-size: 200% 200%;
   }
+
   /* Kill heavy background animation on mobile for faster first paint */
   .wave-bg { animation: none !important; }
 
@@ -155,6 +156,7 @@ footer {
     width: 150px;
     height: 150px;
   }
+
   /* Disable border/box-shadow animations on mobile */
   .hero-card { animation: none !important; }
   .animated-blob { animation: none !important; }
@@ -162,23 +164,8 @@ footer {
   footer {
     font-size: 0.75rem;
   }
-  /* Base reset-ish */
-* { box-sizing: border-box; }
-html, body, #root { height: 100%; }
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  background: #0b0b0c;
-  color: #eaeaea;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
 
-/* Keep big blurs / filters off on mobile Safari */
-:root {
-  --blurs-ok-max: 8px;
-}
-@media (max-width: 768px) {
+  /* Keep big blurs / filters off on mobile Safari */
   .frosted, .fancy-glass {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -186,6 +173,10 @@ body {
     filter: none !important;
   }
 }
+
+/* Base reset-ish */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
 
 /* Prefer transform-based animations; avoid animating box-shadow/filter */
 .anim-move { will-change: transform; }
@@ -201,8 +192,6 @@ img { image-rendering: optimizeQuality; }
 
 /* Links/buttons accessible focus without tap highlight */
 a, button { outline-color: #7aa2ff; }
-
-}
 
 /* Respect user preference globally */
 @media (prefers-reduced-motion: reduce) {
